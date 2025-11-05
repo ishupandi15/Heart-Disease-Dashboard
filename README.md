@@ -4,15 +4,16 @@
 **Instructor:** Prof. Asmaa Elbadrawy  
 **Semester:** Spring 2025  
 
+**GitHub Repository:** [https://github.com/ishupandi15/Heart-Disease-Dashboard](https://github.com/ishupandi15/Heart-Disease-Dashboard)
+
 ---
 
 ## 👩‍💻 Team Members
-| Name | Student ID |
-|------|-------------|
-| Aathira Vazaiel Raghavan | 1233857497 |
-| Adhithi Sathish Kumar | 1233343815 |
-| Ishwariya Pandi | 1233885850 |
-| Vaishmitha Reddy Biyyapu | 1233298757 |
+
+- **Aathira Vazaiel Raghavan** – 1233857497  
+- **Adhithi Sathish Kumar** – 1233343815  
+- **Ishwariya Pandi** – 1233885850  
+- **Vaishmitha Reddy Biyyapu** – 1233298757  
 
 ---
 
@@ -83,13 +84,11 @@ The team used Mural for brainstorming dataset selection, defining user personas,
 ---
 
 ## ⚙️ Tools Used
-| Tool | Purpose |
-|------|----------|
-| **Tableau Desktop / Tableau Public** | Dashboard creation & visualization |
-| **Tableau Prep Builder** | Data preprocessing and cleaning |
-| **Mural** | Team collaboration & visual planning |
-| **Microsoft Word** | Report documentation |
-| **GitHub** | Version control & project submission |
+- **Tableau Desktop / Tableau Public** – Dashboard creation & visualization  
+- **Tableau Prep Builder** – Data preprocessing and cleaning  
+- **Mural** – Team collaboration & visual planning  
+- **Microsoft Word** – Report documentation  
+- **GitHub** – Version control & project submission  
 
 ---
 
@@ -108,10 +107,10 @@ The team used Mural for brainstorming dataset selection, defining user personas,
 ---
 
 ## 👥 Prospective Dashboard Users
-- **Cardiologists & Medical Practitioners:** Diagnose and identify risk groups
-- **Healthcare Administrators:** Allocate resources and create awareness programs
-- **Researchers & Analysts:** Study correlations and predictive features
-- **Insurance Analysts:** Assess client risk and calculate premiums
+- **Cardiologists & Medical Practitioners:** Diagnose and identify risk groups  
+- **Healthcare Administrators:** Allocate resources and create awareness programs  
+- **Researchers & Analysts:** Study correlations and predictive features  
+- **Insurance Analysts:** Assess client risk and calculate premiums  
 
 ---
 
@@ -139,4 +138,16 @@ Used to create dynamic KPIs, running totals, and user-driven filtering.
 ## 📂 Repository Structure
 
 <img width="296" height="698" alt="image" src="https://github.com/user-attachments/assets/6b89f666-4105-4b5e-86bc-a52935eb0ba9" />
+
+---
+
+## 🔗 GitHub Repository
+[**View Project Repository on GitHub**](https://github.com/ishupandi15/Heart-Disease-Dashboard)
+
+---
+
+### 🎓 Submitted by *Team 8*  
+**IFT 533 – Data Visualization & Reporting for IT**  
+Arizona State University | Spring 2025  
+
 
