@@ -1,19 +1,10 @@
-# 💓 Heart Disease Dashboard – Team 8
+# 💓 Heart Disease Dashboard
 
 **Course:** IFT 533 – Data Visualization & Reporting for IT  
 **Instructor:** Prof. Asmaa Elbadrawy  
 **Semester:** Spring 2025  
 
 **GitHub Repository:** [https://github.com/ishupandi15/Heart-Disease-Dashboard](https://github.com/ishupandi15/Heart-Disease-Dashboard)
-
----
-
-## 👩‍💻 Team Members
-
-- **Aathira Vazaiel Raghavan** – 1233857497  
-- **Adhithi Sathish Kumar** – 1233343815  
-- **Ishwariya Pandi** – 1233885850  
-- **Vaishmitha Reddy Biyyapu** – 1233298757  
 
 ---
 
