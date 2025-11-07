@@ -3,70 +3,81 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Heart Disease Dashboard — Team 8</title>
+  <title>Heart Disease Dashboard</title>
   <meta name="description" content="Interactive Tableau Dashboard analyzing UCI Heart Disease dataset. IFT 533 - Data Visualization & Reporting for IT (Spring 2025)" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* Global */
     *{box-sizing:border-box;margin:0;padding:0}
     body{
       font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial;
       background:#05060a;color:#eef6ff;line-height:1.5;overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
     }
 
-    /* Hero */
-    header{position:relative;height:72vh;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    header img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.6) contrast(1.03)}
-    header::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,12,0.4) 0%, rgba(2,6,12,0.8) 70%)}
-    .hero-inner{position:relative;z-index:2;text-align:center;padding:2rem 1rem;max-width:1200px}
+    /* HERO */
+    header{position:relative;height:66vh;min-height:380px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    header img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.58) contrast(1.04)}
+    header::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,12,0.45) 0%, rgba(2,6,12,0.86) 75%)}
+    .hero-inner{position:relative;z-index:2;text-align:center;padding:1.8rem 1rem;max-width:1100px}
+    .subtitle{color:#bfe6ff;opacity:0.95;margin-bottom:6px;font-size:.95rem}
+    h1{font-size:2.2rem;color:#fff;margin-bottom:8px;letter-spacing:-0.01em;font-weight:600}
+    p.lead{color:#cbd8e6;max-width:900px;margin:0 auto;font-size:1rem}
 
-    .subtitle{color:#d6e3f2;opacity:0.9;margin-bottom:8px}
-    h1{font-size:2.4rem;color:#fff;margin-bottom:8px;letter-spacing:-0.02em}
-    p.lead{color:#cbd8e6;max-width:920px;margin:0 auto}
-
-    /* CTA buttons */
+    /* CTA */
     .buttons{margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     .btn{
-      display:inline-block;padding:.8rem 1.5rem;border-radius:999px;background:linear-gradient(90deg,#00b4d8,#0077b6);
-      color:#fff;font-weight:600;text-decoration:none;box-shadow:0 10px 30px rgba(0,119,182,0.12);transition:transform .18s,box-shadow .18s;
+      display:inline-block;padding:.82rem 1.6rem;border-radius:999px;
+      background:linear-gradient(90deg,#00b4d8,#0077b6);
+      color:#fff;font-weight:700;text-decoration:none;
+      box-shadow:0 10px 36px rgba(0,180,216,0.12);
+      transition:transform .18s,box-shadow .18s;
+      position:relative;
     }
-    .btn.alt{background:transparent;border:1px solid rgba(255,255,255,0.08)}
-    .btn:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(0,119,182,0.16)}
+    .btn:hover{transform:translateY(-4px);box-shadow:0 20px 54px rgba(0,180,216,0.18)}
 
     /* Main */
     main{max-width:980px;margin:34px auto;padding:0 18px;color:#d7e3ef}
     section{padding:28px 0;border-top:1px solid rgba(255,255,255,0.03)}
-    section h3{color:#00b4d8;font-size:1.15rem;margin-bottom:.6rem}
+    section h3{color:#00b4d8;font-size:1.15rem;margin-bottom:.6rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+    section h3 svg{width:20px;height:20px;fill:#00b4d8;filter:drop-shadow(0 0 4px #00b4d8);flex-shrink:0}
     .muted{color:#b9c7d7}
+    .lead-compact{max-width:820px;margin:0 auto;color:#cbd8e6}
 
-    /* grid stats & tech */
+    /* preview */
+    .preview{margin-top:22px;text-align:center}
+    .preview img{width:92%;max-width:720px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);
+      box-shadow:0 10px 30px rgba(0,0,0,0.45);transition:transform .25s ease,box-shadow .25s;}
+    .preview img:hover{transform:scale(1.02);box-shadow:0 18px 44px rgba(0,0,0,0.55)}
+
+    /* Stats + tech */
     .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:12px}
-    .card{background:rgba(255,255,255,0.02);padding:14px 18px;border-radius:12px;min-width:220px;border:1px solid rgba(255,255,255,0.03)}
-    .card strong{display:block;font-size:1.25rem;color:#fff}
-    .tech-stack{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:12px}
-    .tech{padding:.5rem .9rem;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);font-weight:600;color:#fff;transition:transform .18s,box-shadow .3s}
-    .tech:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,180,216,0.08)}
+    .card{background:rgba(255,255,255,0.02);padding:14px 18px;border-radius:12px;min-width:200px;border:1px solid rgba(255,255,255,0.03)}
+    .card strong{display:block;font-size:1.22rem;color:#fff}
+    .tech-stack{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:16px}
+    .tech{
+      padding:.5rem .9rem;border-radius:999px;background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.06);font-weight:600;color:#fff;
+      transition:transform .18s,box-shadow .18s;
+      animation:pulse 3.2s ease-in-out infinite;
+    }
+    .tech:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,180,216,0.12)}
+    @keyframes pulse{0%{box-shadow:0 0 0 rgba(0,180,216,0);}
+      50%{box-shadow:0 0 18px rgba(0,180,216,0.40);}
+      100%{box-shadow:0 0 0 rgba(0,180,216,0);}
+    }
 
-    /* repository block */
-    .repo{margin-top:18px;text-align:center}
-    .repo a{color:#00b4d8;text-decoration:none;font-weight:600}
+    /* Scroll reveal */
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
 
-    /* footer */
     footer{padding:22px 12px;color:#9fb0c6;text-align:center;border-top:1px solid rgba(255,255,255,0.02);margin-top:28px}
 
-    /* animations */
-    .fade{opacity:0;transform:translateY(10px);animation:fadeIn .7s ease forwards}
-    .delay-1{animation-delay:.12s}
-    .delay-2{animation-delay:.28s}
-    .delay-3{animation-delay:.46s}
-    @keyframes fadeIn{to{opacity:1;transform:none}}
-
-    /* responsive */
     @media (max-width:820px){
       h1{font-size:1.6rem}
-      header{height:56vh}
+      header{height:58vh}
       .card{min-width:150px}
+      .preview img{width:96%}
     }
   </style>
 </head>
@@ -74,68 +85,39 @@
 
   <!-- HERO -->
   <header>
-    <img src="covertableau.jpg" alt="Tableau cover banner">
+    <img src="covertableau.jpg" alt="Tableau cover banner" />
     <div class="hero-inner" role="banner">
-      <div class="subtitle fade delay-1">📊 IFT 533 — Data Visualization & Reporting for IT • Spring 2025</div>
-      <h1 class="fade delay-2">Heart Disease Dashboard — Team 8</h1>
-      <p class="lead fade delay-3">
-        Interactive Tableau dashboard analyzing the UCI Cleveland Heart Disease dataset — exploratory analytics, interactive filters, and actionable insights for clinicians and analysts.
-      </p>
-
-      <div class="buttons fade delay-3" role="navigation" aria-label="Primary links">
-        <a class="btn" href="https://public.tableau.com/views/Project_17461692652870/Dashboard1" target="_blank" rel="noopener">🔗 View Dashboard (Tableau Public)</a>
-        <a class="btn alt" href="https://app.mural.co/t/groupproject4860/m/groupproject4860/1744922611269/3c819384f9cf616b64334fd813ba36b991207e95" target="_blank" rel="noopener">🧩 Mural Board</a>
+      <div class="subtitle">📊 IFT 533 — Data Visualization & Reporting for IT • Spring 2025</div>
+      <h1>Heart Disease Dashboard</h1>
+      <p class="lead">Interactive Tableau dashboard analyzing the UCI Cleveland Heart Disease dataset with filters, KPIs and visual exploration for clinicians and analysts.</p>
+      <div class="buttons">
+        <a class="btn" href="https://public.tableau.com/views/Project_17461692652870/Dashboard1" target="_blank" rel="noopener">🔗 View Dashboard</a>
+        <a class="btn" href="https://app.mural.co/t/groupproject4860/m/groupproject4860/1744922611269/3c819384f9cf616b64334fd813ba36b991207e95" target="_blank" rel="noopener">🧩 Mural Board</a>
       </div>
     </div>
   </header>
 
-  <main role="main">
+  <main>
     <!-- Overview -->
-    <section aria-labelledby="overview">
-      <h3 id="overview">Project Overview</h3>
-      <p class="muted">
-        The project explores risk factors for heart disease in the UCI Cleveland dataset (303 rows × 14 attributes). Completed in three phases — Planning, Decision Making, and Dashboard Implementation — and delivered as an interactive Tableau visualization.
-      </p>
-    </section>
-
-    <!-- Deliverables -->
-    <section aria-labelledby="deliverables">
-      <h3 id="deliverables">Final Deliverables</h3>
-      <p class="muted">Interactive Tableau dashboard, phase reports, and a collaborative Mural board used for design and planning.</p>
-
-      <div class="row">
-        <div class="card">
-          <strong>Tableau Dashboard</strong>
-          <span class="muted">Interactive visualizations & filters</span>
-          <div style="margin-top:8px"><a href="https://public.tableau.com/views/Project_17461692652870/Dashboard1" target="_blank" rel="noopener" class="repo-link">Open on Tableau Public →</a></div>
-        </div>
-
-        <div class="card">
-          <strong>Mural Board</strong>
-          <span class="muted">Design thinking & team collaboration</span>
-          <div style="margin-top:8px"><a href="https://app.mural.co/t/groupproject4860/m/groupproject4860/1744922611269/3c819384f9cf616b64334fd813ba36b991207e95" target="_blank" rel="noopener" class="repo-link">Open Mural →</a></div>
-        </div>
+    <section id="overview" class="reveal">
+      <h3>
+        <!-- glowing svg -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3l1.46 4.48L18 8l-3.77 2.73L15.18 15 12 12.75 8.82 15l.95-4.27L6 8l4.54-.52L12 3z"/></svg>
+        Project Overview
+      </h3>
+      <p class="lead-compact muted">Explores risk factors for heart disease using the UCI Cleveland dataset (303 rows × 14 attributes). Completed in three phases — Planning, Decision Making, Dashboard Implementation — and delivered as an interactive Tableau visualization.</p>
+      <div class="preview">
+        <img src="tableau/Tableau%20Dashboard.png" alt="Heart Disease Dashboard Preview" />
       </div>
     </section>
 
-    <!-- Phases -->
-    <section aria-labelledby="phases">
-      <h3 id="phases">Project Phases</h3>
-      <p class="muted"><strong>Phase I — Planning:</strong> Dataset selection, user personas, exploratory questions. • <strong>Phase II — Decision Making:</strong> Tools selection, preprocessing (Tableau Prep), visual design. • <strong>Phase III — Implementation:</strong> Dashboard build, interactivity, and validation.</p>
-
-      <div style="margin-top:14px;text-align:center">
-        <a class="btn alt" href="reports/Phase1_Planning.docx" target="_blank">🗎 Phase 1 Report</a>
-        <a class="btn alt" href="reports/Phase2_DecisionMaking.docx" target="_blank">🗎 Phase 2 Report</a>
-        <a class="btn alt" href="reports/Phase3_FinalDashboard.docx" target="_blank">🗎 Phase 3 Report</a>
-      </div>
-    </section>
-
-    <!-- Data & Tools -->
-    <section aria-labelledby="data-tools">
-      <h3 id="data-tools">Dataset & Tools</h3>
-      <p class="muted">Source: UCI Machine Learning Repository — Heart Disease (Cleveland). File located at <code>/data/heart-disease.zip</code> in the repo.</p>
-
-      <div class="tech-stack" aria-hidden="false">
+    <!-- Tools -->
+    <section id="tools" class="reveal">
+      <h3>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l4 4h-3v6H11V6H8l4-4zm0 20l-4-4h3v-6h2v6h3l-4 4z"/></svg>
+        Technologies & Tools Used
+      </h3>
+      <div class="tech-stack">
         <span class="tech">Tableau Desktop</span>
         <span class="tech">Tableau Public</span>
         <span class="tech">Tableau Prep</span>
@@ -145,33 +127,59 @@
       </div>
     </section>
 
-    <!-- Insights -->
-    <section aria-labelledby="insights">
-      <h3 id="insights">Insights Explored</h3>
-      <p class="muted">Age and gender patterns, cholesterol & BP relationships, thalassemia distribution, fasting blood sugar impact, and visualization-driven KPIs for clinician interpretation.</p>
+    <!-- Deliverables -->
+    <section id="deliverables" class="reveal">
+      <h3>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v2H4V6zm0 4h10v2H4v-2zm0 4h16v2H4v-2z"/></svg>
+        Final Deliverables
+      </h3>
+      <p class="muted">Interactive dashboard (Tableau Public), collaborative Mural board, and detailed project reports (Phase I, II, III) available in repository.</p>
+      <div class="row" style="margin-top:14px">
+        <div class="card">
+          <strong>Tableau Dashboard</strong>
+          <span class="muted">Interactive visualizations & user controls</span>
+        </div>
+        <div class="card">
+          <strong>Mural Board</strong>
+          <span class="muted">Design thinking & team collaboration</span>
+        </div>
+      </div>
     </section>
 
-    <!-- Stats / Quick Links -->
-    <section aria-labelledby="quick">
-      <h3 id="quick">Quick Links & Repo</h3>
-
-      <div class="row" style="margin-top:10px">
+    <!-- Quick -->
+    <section id="quick" class="reveal">
+      <h3>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm1 15h-2v-2h2zm0-4h-2V7h2z"/></svg>
+        Quick Links & Repo
+      </h3>
+      <div class="row" style="margin-top:12px">
         <div class="card"><strong>Course</strong><span class="muted">IFT 533 — Data Visualization & Reporting for IT</span></div>
         <div class="card"><strong>Instructor</strong><span class="muted">Prof. Asmaa Elbadrawy</span></div>
         <div class="card"><strong>Semester</strong><span class="muted">Spring 2025</span></div>
       </div>
-
-      <div class="repo" style="margin-top:18px">
-        <div class="muted">GitHub Repository</div>
-        <div style="margin-top:8px"><a class="repo" href="https://github.com/ishupandi15/Heart-Disease-Dashboard" target="_blank">github.com/ishupandi15/Heart-Disease-Dashboard</a></div>
-      </div>
+      <p style="margin-top:16px;color:#d0d7df">
+        🔗 Repository: <a href="https://github.com/ishupandi15/Heart-Disease-Dashboard" target="_blank" style="color:#00b4d8;text-decoration:none;font-weight:600">ishupandi15/Heart-Disease-Dashboard</a>
+      </p>
     </section>
   </main>
 
   <footer>
-    <div>Team 8 — IFT 533 • Arizona State University • Spring 2025</div>
-    <div style="margin-top:6px" class="muted">Dataset: UCI Heart Disease • Tableau Public Dashboard & project reports included in repo</div>
+    IFT 533 — Arizona State University • Spring 2025 • Dataset: UCI Heart Disease Repository
   </footer>
 
+  <!-- Scroll reveal -->
+  <script>
+    (function(){
+      const obs = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        })
+      },{threshold:.12});
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    })();
+  </script>
 </body>
 </html>
